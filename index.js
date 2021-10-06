@@ -3,6 +3,7 @@ const {MongoClient} = require('mongodb');
 require('dotenv').config()
 const mongoose = require('mongoose');
 const PORT = process.env.SERVER_PORT || 8080;
+const HOST = process.env.HOST || localhost;
 
 const app = express()
 
@@ -15,7 +16,7 @@ const mongoDbURL = process.env.MONGODB_URL|| 'mongodb://127.0.0.1:27017/todos';
 mongoose.connect(
     mongoDbURL,
 ).then(() => {
-    app.listen(PORT, () => {
+    app.listen(PORT, HOST, () => {
         console.log(`Todos Service Up and Running on ${PORT}`);
     })
 }).catch((error => {
