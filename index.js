@@ -2,7 +2,7 @@ const express = require("express")
 const {MongoClient} = require('mongodb');
 require('dotenv').config()
 const mongoose = require('mongoose');
-const PORT = process.env.SERVER_PORT;
+const PORT = process.env.SERVER_PORT || '0.0.0.0';
 
 const app = express()
 
@@ -10,7 +10,7 @@ app.get("/", function(req, res){
     res.send("working well though")
 })
 
-const mongoDbURL = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/todos';
+const mongoDbURL = process.env.MONGODB_URL|| 'mongodb://127.0.0.1:27017/todos';
 
 mongoose.connect(
     mongoDbURL,
@@ -23,10 +23,6 @@ mongoose.connect(
 }));
 
 async function main(){
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
     const uri = "mongodb+srv://lovenshier:1234@cluster0.mwqem.mongodb.net/test?retryWrites=true&w=majority";
 
 
