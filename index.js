@@ -2,7 +2,7 @@ const express = require("express")
 const {MongoClient} = require('mongodb');
 require('dotenv').config()
 const mongoose = require('mongoose');
-const PORT = process.env.SERVER_PORT || '0.0.0.0';
+const PORT = process.env.SERVER_PORT;
 
 const app = express()
 
@@ -49,5 +49,5 @@ async function listDatabases(client){
 
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
+}
 
